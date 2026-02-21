@@ -36,6 +36,6 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "Producto{" + "codigo= " + codigo + ", nombre= " + nombre + ", precio= " + precio + ", stock= " + stock + " | " + proveedor.toString() + '}';
+        return "Principal.Producto{" + "codigo= " + codigo + ", nombre= " + nombre + ", precio= " + precio + ", stock= " + stock + " | " + proveedor.toString() + '}';
     }
 }

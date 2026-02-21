@@ -17,6 +17,6 @@ public class Proveedor implements Serializable {
 
     @Override
     public String toString() {
-        return "Proveedor{" + "id= " + id + ", nombre= " + nombre + ", telefono= " + telefono + '}';
+        return "Principal.Proveedor{" + "id= " + id + ", nombre= " + nombre + '}';
     }
 }

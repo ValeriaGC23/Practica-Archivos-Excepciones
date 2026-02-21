@@ -17,6 +17,6 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return  "Cliente{" + "id= " + id + ", nombre= " + nombre + ", email= " + email + '}';
+        return  "Principal.Cliente{" + "id= " + id + ", nombre= " + nombre + ", email= " + email + '}';
     }
 }

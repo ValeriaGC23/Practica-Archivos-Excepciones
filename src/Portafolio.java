@@ -33,8 +33,8 @@ public class Portafolio {
         if (contadorProveedores == nProveedores) {
             throw new CapacidadMaximaException("Capacidad maxima de proveedores alcanzada");
         } else {
-            for (int i=0; i<contadorProveedores; i++) {
-                if (proveedores[i].getId() == proveedor.getId()) {
+            for (Proveedor p : proveedores) {
+                if (p.getId() == proveedor.getId()) {
                     throw new CodigoDuplicadoException("El proveedor ya existe");
                 }
             }
@@ -47,8 +47,8 @@ public class Portafolio {
         if (contadorClientes == nClientes) {
             throw new CapacidadMaximaException("Capacidad maxima de clientes alcanzada");
         } else {
-            for (int i=0; i<contadorClientes; i++) {
-                if (clientes[i].getId() == cliente.getId()) {
+            for (Cliente c : clientes) {
+                if (c.getId() == cliente.getId()) {
                     throw new CodigoDuplicadoException("El cliente ya existe");
                 }
             }
@@ -62,8 +62,8 @@ public class Portafolio {
         if (contadorProductos == nProductos) {
             throw new CapacidadMaximaException("Capacidad maxima de productos alcanzada");
         } else {
-            for (int i=0; i<contadorProductos; i++) {
-                if (productos[i].getCodigo() == producto.getCodigo()) {
+            for (Producto p : productos) {
+                if (p.getCodigo() == producto.getCodigo()) {
                     throw new CodigoDuplicadoException("El producto ya existe");
                 }
             }
@@ -73,38 +73,38 @@ public class Portafolio {
     }
 
     public Proveedor buscarProveedor(int idProveedor) throws ProveedorNoExisteException {
-        for (int i=0; i<contadorProveedores; i++) {
-            if (proveedores[i].getId() == idProveedor) {
-                return proveedores[i];
+        for (Proveedor proveedor : proveedores) {
+            if (proveedor.getId() == idProveedor) {
+                return proveedor;
             }
         }
-        throw new ProveedorNoExisteException("Proveedor no existe");
+        throw new ProveedorNoExisteException("Principal.Proveedor no existe");
     }
 
     public Producto buscarProducto(int codigo) throws ProductoNoExisteException {
-        for (int i=0; i<contadorProductos; i++) {
-            if (productos[i].getCodigo() == codigo) {
-                return productos[i];
+        for (Producto producto : productos) {
+            if (producto.getCodigo() == codigo) {
+                return producto;
             }
         }
-        throw new ProductoNoExisteException("El producto no existe");
+        throw new ProductoNoExisteException("Principal.Producto no existe");
     }
 
     public void listarProveedores() {
-        for (int i=0; i<contadorProveedores; i++) {
-            System.out.println(proveedores[i]);
+        for (Proveedor proveedor : proveedores) {
+            System.out.println(proveedor);
         }
     }
 
     public void listarClientes() {
-        for (int i=0; i<contadorClientes; i++) {
-            System.out.println(clientes[i]);
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente);
         }
     }
 
     public void listarProductos() {
-        for (int i=0; i<contadorProductos; i++) {
-            System.out.println(productos[i]);
+        for (Producto producto : productos) {
+            System.out.println(producto);
         }
     }
 
