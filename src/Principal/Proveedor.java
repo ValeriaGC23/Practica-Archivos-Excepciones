@@ -3,6 +3,7 @@ package Principal;
 import java.io.Serializable;
 
 public class Proveedor implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int id;
     private String nombre;
     private String telefono;

@@ -6,7 +6,10 @@ import Principal.Cliente;
 import Principal.Producto;
 import Principal.Proveedor;
 
-public class Portafolio {
+import java.io.Serializable;
+
+public class Portafolio implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Proveedor[] proveedores;
     private Cliente[] clientes;
     private Producto[] productos;

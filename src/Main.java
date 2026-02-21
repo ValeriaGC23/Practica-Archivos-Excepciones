@@ -8,39 +8,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        //Portafolio
-        Portafolio portafolio = new Portafolio(5, 20, 7);
+        Portafolio portafolio;
 
-        //Proveedores
-        Proveedor proveedor1 = new Proveedor(82686, "Tech Solutions", "555-012-3453");
-        Proveedor proveedor2 = new Proveedor(20054, "Apple Inc", "154-234-7857");
-        Proveedor proveedor3 = new Proveedor(50321, "Logística Flash", "016-800-9997");
-
-        portafolio.agregarProveedor(proveedor1);
-        portafolio.agregarProveedor(proveedor2);
-        portafolio.agregarProveedor(proveedor3);
-
-        //Clientes
-        Cliente c1 = new Cliente(12435543, "Marta Gonzalez", "marta@gmail.com");
-        Cliente c2 = new Cliente(98765432, "Carlos Ramirez", "c.ramirez@outlook.com");
-        Cliente c3 = new Cliente(45678, "Lucia Fernandez", "lucia.f88@yahoo.com");
-
-        portafolio.agregarCliente(c1);
-        portafolio.agregarCliente(c2);
-        portafolio.agregarCliente(c3);
-
-        //Productos
-        Producto p1 = new Producto(234, "Impresora Samsung", 750097.8, 3, proveedor3);
-        Producto p2 = new Producto(501, "Monitor LG 27'", 485000.5, 15, proveedor1);
-        Producto p3 = new Producto(882, "Teclado Mecánico RGB", 1235900.0, 8, proveedor2);
-
-        portafolio.agregarProducto(p1);
-        portafolio.agregarProducto(p2);
-        portafolio.agregarProducto(p3);
+        java.io.File archivo = new java.io.File("portafolio.dat");
+        if (archivo.exists()) {
+            portafolio = PersistenciaLectura.leer("portafolio.dat"); // carga lo guardado
+        } else {
+            portafolio = new Portafolio(5, 20, 7); // solo si no existe el archivo
+        }
 
         //Menu
         Scanner sc = new Scanner(System.in);
         int opcion;
+        boolean continuar = true;
 
         do{
             System.out.println("\n------ BIENVENIDO A NUESTRO PORTAFOLIO ------ \n");
@@ -89,7 +69,7 @@ public class Main {
                     System.out.print("Ingrese nombre: ");
                     String nombreCliente = sc.nextLine();
 
-                    System.out.print("Ingrese telefono: ");
+                    System.out.print("Ingrese email: ");
                     String emailCliente = sc.nextLine();
 
                     try{
@@ -135,7 +115,7 @@ public class Main {
                         break;
                     }
 
-                    System.out.println("Proveedor registrado con exito");
+                    System.out.println("Producto registrado con exito");
                     break;
 
                 case 4:
@@ -208,12 +188,22 @@ public class Main {
                     break;
 
                 case 10:
+                    Persistencia.guardar("portafolio.dat", portafolio);
+                    break;
 
+                case 11:
+                    Portafolio portafolioLeido = PersistenciaLectura.leer("portafolio.dat");
+                    portafolioLeido.listarProveedores();
+                    portafolioLeido.listarClientes();
+                    portafolioLeido.listarProductos();
+                    break;
 
-
-
+                case 12:
+                    Persistencia.guardar("portafolio.dat", portafolio);
+                    System.out.println("Hasta luego!");
+                    continuar = false;
+                    break;
             }
-
-        } while (true);
+        } while (continuar);
     }
 }
